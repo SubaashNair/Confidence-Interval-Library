@@ -30,8 +30,8 @@ def read_file(filename):
     return long_description
 
 setup(
-    name='confidence_interval',
-    version='0.1.0',
+    name='Stats_CI',
+    version='0.1.2',
     author='Subashanan Nair',
     author_email='your.email@example.com',
     packages=find_packages(where="src"),
