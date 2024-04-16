@@ -9,6 +9,7 @@ You can install the Confidence Interval Library directly from PyPI:
 
 ```bash
 pip install confidence_interval
+
 ```
 
 ## Features
