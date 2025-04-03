@@ -3,7 +3,7 @@ requires = ["setuptools>=45", "wheel", "setuptools_scm>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "confidence_interval"
+name = "stats_confidence_intervals"
 dynamic = ["version"]
 description = "A comprehensive library for calculating and visualizing statistical confidence intervals"
 readme = "README.md"

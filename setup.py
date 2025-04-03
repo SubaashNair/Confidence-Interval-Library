@@ -10,7 +10,7 @@ def read_file(filename):
     return long_description
 
 setup(
-    name="confidence_interval",
+    name="stats_confidence_intervals",
     version="0.2.3",
     author="Subashanan Nair",
     author_email="subashanan.nair@gmail.com",

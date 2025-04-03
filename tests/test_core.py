@@ -1,6 +1,6 @@
-import unittest
+import pytest
 import numpy as np
-from confidence_interval.core import (
+from stats_confidence_intervals.core import (
     mean_confidence_interval,
     proportion_confidence_interval,
     ConfidenceInterval,

@@ -1,6 +1,6 @@
-import numpy as np
 from sklearn.datasets import fetch_california_housing
-from confidence_interval.core import mean_confidence_interval, plot_confidence_interval
+import numpy as np
+from stats_confidence_intervals.core import mean_confidence_interval, plot_confidence_interval
 import matplotlib.pyplot as plt
 
 # Load California housing dataset
