@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.2] - 2024-04-03
+### Added
+- Implemented custom Wilson score interval method for better proportion confidence intervals
+- Added custom normal approximation interval method
+- Improved reliability by removing dependency on scipy.stats.proportion_confint
+
 ## [0.2.1] - 2024-04-03
 
 ### Changed
