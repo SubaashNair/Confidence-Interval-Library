@@ -11,7 +11,7 @@ def read_file(filename):
 
 setup(
     name='confidence_interval',
-    version='0.2.2',
+    version='0.2.3',
     author='Subashanan Nair',
     author_email='subashanan.nair@gmail.com',
     packages=find_packages(where="src"),

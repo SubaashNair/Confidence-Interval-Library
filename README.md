@@ -1,10 +1,8 @@
 # Confidence Interval Library
 
-A comprehensive Python library for calculating and visualizing confidence intervals for various statistical metrics. This library simplifies the process of estimating confidence intervals around sample statistics, with support for means, proportions, and visualization tools.
+A Python library for calculating and visualizing confidence intervals.
 
 ## Installation
-
-You can install the Confidence Interval Library directly from PyPI:
 
 ```bash
 pip install confidence_interval
@@ -12,101 +10,82 @@ pip install confidence_interval
 
 ## Features
 
-- **Mean Confidence Intervals**: Calculate confidence intervals for sample means using t-distribution
-- **Proportion Confidence Intervals**: Calculate confidence intervals for proportions using Wilson score or normal approximation methods
-- **Visualization Tools**: Built-in plotting functions for visualizing confidence intervals
-- **Input Validation**: Robust input validation and error handling
-- **Type Hints**: Full Python type hint support for better IDE integration
-- **Customizable Confidence Levels**: Support for any confidence level between 0 and 1
+- Calculate confidence intervals for means
+- Calculate confidence intervals for proportions using:
+  - Wilson score method (recommended for small sample sizes)
+  - Normal approximation method (for large sample sizes)
+- Visualize confidence intervals with customizable plots
+- Support for both list and numpy array inputs
+- Comprehensive error checking and validation
 
 ## Usage
 
-### Calculating Mean Confidence Interval
+### Mean Confidence Interval
 
 ```python
-from confidence_interval import mean_confidence_interval
+from confidence_interval.core import mean_confidence_interval
+import numpy as np
 
-# Calculate 95% confidence interval for a sample mean
-data = [1, 2, 3, 4, 5]
-ci = mean_confidence_interval(data)
+data = np.random.normal(100, 15, size=50)
+ci = mean_confidence_interval(data, confidence=0.95)
 print(f"Mean: {ci.estimate:.2f}")
 print(f"95% CI: ({ci.lower_bound:.2f}, {ci.upper_bound:.2f})")
-
-# Calculate 90% confidence interval
-ci_90 = mean_confidence_interval(data, confidence=0.90)
-print(f"90% CI: ({ci_90.lower_bound:.2f}, {ci_90.upper_bound:.2f})")
 ```
 
-### Calculating Proportion Confidence Interval
+### Proportion Confidence Interval
 
 ```python
-from confidence_interval import proportion_confidence_interval
+from confidence_interval.core import proportion_confidence_interval
 
-# Calculate confidence interval for a proportion using Wilson score method
-successes = 7
-total = 10
-ci = proportion_confidence_interval(successes, total, method='wilson')
+successes = 45
+total = 100
+ci = proportion_confidence_interval(successes, total, confidence=0.95, method='wilson')
 print(f"Proportion: {ci.estimate:.2f}")
 print(f"95% CI: ({ci.lower_bound:.2f}, {ci.upper_bound:.2f})")
-
-# Using normal approximation method
-ci_normal = proportion_confidence_interval(successes, total, method='normal')
-print(f"95% CI (normal): ({ci_normal.lower_bound:.2f}, {ci_normal.upper_bound:.2f})")
 ```
 
-### Visualizing Confidence Intervals
+## Development
 
-```python
-from confidence_interval import mean_confidence_interval, plot_confidence_interval
+This project uses GitHub Actions for automated testing and deployment. The workflow includes:
 
-data = [1, 2, 3, 4, 5]
-ci = mean_confidence_interval(data)
-plot_confidence_interval(ci, label="Sample Mean")
-```
+- Automated tests on Python versions 3.8-3.12
+- Automatic releases when tags are pushed
+- Automated PyPI publishing
 
-## Requirements
+### Contributing
 
-- Python 3.7+
-- NumPy >= 1.20.0
-- SciPy >= 1.7.0
-- Matplotlib >= 3.4.0
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Run tests (`pytest tests/`)
+5. Commit your changes (`git commit -m 'feat: Add amazing feature'`)
+6. Push to the branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
 
-## Contributing
+### Release Process
 
-Contributions are welcome! Here are some ways you can contribute:
+The release process is automated through GitHub Actions:
 
-- Report bugs and request features by creating issues
-- Submit pull requests to fix bugs or add new features
-- Improve documentation
-- Add new statistical methods or visualizations
-
-Please read our contributing guidelines before submitting pull requests.
+1. Update version in `setup.py`
+2. Add entry to `CHANGELOG.md`
+3. Commit changes
+4. Create and push a tag:
+   ```bash
+   git tag -a v0.x.x -m "Release version 0.x.x"
+   git push origin v0.x.x
+   ```
+5. GitHub Actions will automatically:
+   - Create a GitHub release
+   - Run tests
+   - Publish to PyPI
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Authors
-
-- **Subashanan Nair** - *Initial work* - [SubaashNair](https://github.com/SubaashNair)
-
-## Acknowledgments
-
-- To my students
-- Logic and Mathematics
-- Life
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Changelog
 
-### 0.2.0
-- Added proportion confidence intervals
-- Added visualization capabilities
-- Added input validation
-- Added type hints
-- Updated documentation
-
-### 0.1.2
-- Initial release with mean confidence intervals
+See [CHANGELOG.md](CHANGELOG.md) for a list of changes and version history.
 
 ```
 

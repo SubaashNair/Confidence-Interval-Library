@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.3] - 2024-04-03
+### Added
+- Automated GitHub release workflow
+- Automated PyPI publishing workflow
+- Comprehensive test workflow for multiple Python versions (3.8-3.12)
+- Improved CI/CD pipeline with automated testing and deployment
+
+### Changed
+- Updated project structure for better automation
+- Enhanced release process with automatic changelog integration
+- Improved test coverage across multiple Python versions
+
 ## [0.2.2] - 2024-04-03
 ### Added
 - Implemented custom Wilson score interval method for better proportion confidence intervals
