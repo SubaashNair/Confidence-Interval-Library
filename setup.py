@@ -10,14 +10,14 @@ def read_file(filename):
     return long_description
 
 setup(
-    name='Stats_CI',
-    version='0.2.0',
+    name='confidence_interval',
+    version='0.2.1',
     author='Subashanan Nair',
-    author_email='subaashnair12gmail.com',
+    author_email='subashanan.nair@gmail.com',
     packages=find_packages(where="src"),
     package_dir={"": "src"},
-    url='http://pypi.python.org/pypi/confidence_interval/',
-    license='LICENSE.txt',
+    url='https://github.com/SubaashNair/Confidence-Interval-Library',
+    license='MIT',
     description='A comprehensive library for calculating and visualizing statistical confidence intervals.',
     long_description=read_file('README.md'),
     long_description_content_type='text/markdown',
