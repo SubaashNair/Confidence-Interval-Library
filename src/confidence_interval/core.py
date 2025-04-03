@@ -55,6 +55,53 @@ def mean_confidence_interval(
     h = se * stats.t.ppf((1 + confidence) / 2., n-1)
     return ConfidenceInterval(m, m-h, m+h, confidence)
 
+def wilson_score_interval(successes: int, total: int, confidence: float = 0.95) -> Tuple[float, float]:
+    """
+    Calculate Wilson score interval for a proportion.
+    
+    Args:
+        successes: Number of successes
+        total: Total number of trials
+        confidence: Confidence level (between 0 and 1)
+    
+    Returns:
+        Tuple of (lower bound, upper bound)
+    """
+    if total == 0:
+        raise ValueError("Total must be positive")
+    
+    p = float(successes) / total
+    z = stats.norm.ppf((1 + confidence) / 2.)
+    z2 = z * z
+    
+    # Calculate terms for Wilson score interval
+    denominator = 1 + z2/total
+    center = (p + z2/(2*total)) / denominator
+    spread = z * np.sqrt(p*(1-p)/total + z2/(4*total*total)) / denominator
+    
+    return center - spread, center + spread
+
+def normal_approximation_interval(successes: int, total: int, confidence: float = 0.95) -> Tuple[float, float]:
+    """
+    Calculate normal approximation interval for a proportion.
+    
+    Args:
+        successes: Number of successes
+        total: Total number of trials
+        confidence: Confidence level (between 0 and 1)
+    
+    Returns:
+        Tuple of (lower bound, upper bound)
+    """
+    if total == 0:
+        raise ValueError("Total must be positive")
+    
+    p = float(successes) / total
+    z = stats.norm.ppf((1 + confidence) / 2.)
+    se = np.sqrt(p * (1-p) / total)
+    
+    return p - z*se, p + z*se
+
 def proportion_confidence_interval(
     successes: int,
     total: int,
@@ -80,15 +127,15 @@ def proportion_confidence_interval(
         raise ValueError("Total must be positive")
     
     p = successes / total
+    
     if method == 'wilson':
-        ci = stats.proportion_confint(successes, total, alpha=1-confidence, method='wilson')
-        return ConfidenceInterval(p, ci[0], ci[1], confidence)
+        lower, upper = wilson_score_interval(successes, total, confidence)
     elif method == 'normal':
-        z = stats.norm.ppf((1 + confidence) / 2.)
-        se = np.sqrt(p * (1-p) / total)
-        return ConfidenceInterval(p, p-z*se, p+z*se, confidence)
+        lower, upper = normal_approximation_interval(successes, total, confidence)
     else:
         raise ValueError("Method must be 'wilson' or 'normal'")
+    
+    return ConfidenceInterval(p, lower, upper, confidence)
 
 def plot_confidence_interval(
     ci: ConfidenceInterval,

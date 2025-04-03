@@ -5,6 +5,8 @@
 ### Changed
 - Renamed package from Stats_CI to confidence_interval for better clarity
 - Updated package metadata and documentation
+- Implemented custom Wilson score and normal approximation methods for proportion confidence intervals
+- Removed dependency on scipy.stats.proportion_confint
 
 ## [0.2.0] - 2024-04-03
 
