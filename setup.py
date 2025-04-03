@@ -1,23 +1,3 @@
-# from setuptools import setup, find_packages
-
-# setup(
-#     name='confidence_interval',
-#     version='0.1.0',
-#     author='Your Name',
-#     author_email='your.email@example.com',
-#     packages=find_packages(where="src"),
-#     package_dir={"": "src"},
-#     url='http://pypi.python.org/pypi/confidence_interval/',
-#     license='LICENSE.txt',
-#     description='An awesome package for confidence intervals.',
-#     long_description=open('README.md').read(),
-#     long_description_content_type='text/markdown',
-#     install_requires=[
-#         "numpy",
-#         "scipy",
-#     ],
-# )
-
 import os
 from setuptools import setup, find_packages
 
@@ -31,19 +11,34 @@ def read_file(filename):
 
 setup(
     name='Stats_CI',
-    version='0.1.2',
+    version='0.2.0',
     author='Subashanan Nair',
-    author_email='your.email@example.com',
+    author_email='subaashnair12gmail.com',
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     url='http://pypi.python.org/pypi/confidence_interval/',
     license='LICENSE.txt',
-    description='An awesome package for confidence intervals.',
+    description='A comprehensive library for calculating and visualizing statistical confidence intervals.',
     long_description=read_file('README.md'),
     long_description_content_type='text/markdown',
     install_requires=[
-        "numpy",
-        "scipy",
+        "numpy>=1.20.0",
+        "scipy>=1.7.0",
+        "matplotlib>=3.4.0",
     ],
+    python_requires='>=3.7',
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Intended Audience :: Science/Research',
+        'Intended Audience :: Education',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Topic :: Scientific/Engineering :: Mathematics',
+        'Topic :: Scientific/Engineering :: Statistics',
+    ],
+    keywords='statistics, confidence intervals, data analysis, visualization',
 )
 
